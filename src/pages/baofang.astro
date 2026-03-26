@@ -1,0 +1,145 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const sellingPoints = [
+  {
+    title: "房产保卫",
+    description: "避免房产被拍卖或被债权人收回，守住家庭资产",
+    icon: "🏠",
+  },
+  {
+    title: "暂缓追责",
+    description: "通过调解协议为负债人争取缓冲时间",
+    icon: "⏸️",
+  },
+  {
+    title: "纳入重组",
+    description: "与银行深度沟通，将房贷逾期纳入债务重组通道",
+    icon: "🔄",
+  },
+  {
+    title: "重塑信用",
+    description: "避免强制执行，帮助回归正常生活",
+    icon: "✨",
+  },
+];
+---
+
+<Layout title="保房" description="保房 - 守护您的资产底线，化解房产危机">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-green-600 to-green-800 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl font-bold mb-4">保房</h1>
+          <p class="text-xl text-green-100 mb-2">守护您的资产底线</p>
+          <p class="text-green-200">
+            针对房产面临拍卖或被收回的危机，我们通过专业的法律手段协助客户保住房产，帮助您重塑信用，回归正常生活。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">您是否面临这样的困境？</h2>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 bg-red-50 rounded-xl p-6">
+              <span class="text-red-500 text-xl">❌</span>
+              <p class="text-gray-700">房贷逾期，担心银行起诉拍卖房产</p>
+            </div>
+            <div class="flex items-start gap-4 bg-red-50 rounded-xl p-6">
+              <span class="text-red-500 text-xl">❌</span>
+              <p class="text-gray-700">收到法院传票，不知道如何应对</p>
+            </div>
+            <div class="flex items-start gap-4 bg-red-50 rounded-xl p-6">
+              <span class="text-red-500 text-xl">❌</span>
+              <p class="text-gray-700">被催收骚扰，生活工作受到严重影响</p>
+            </div>
+            <div class="flex items-start gap-4 bg-red-50 rounded-xl p-6">
+              <span class="text-red-500 text-xl">❌</span>
+              <p class="text-gray-700">罚息和违约金不断累积，债务越滚越大</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">解决方案</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {sellingPoints.map((point) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+              <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">{point.icon}</span>
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-2">{point.title}</h3>
+              <p class="text-gray-600 text-sm">{point.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="py-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">服务流程</h2>
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold shrink-0">1</div>
+            <div>
+              <h3 class="font-semibold text-gray-900 mb-1">咨询评估</h3>
+              <p class="text-gray-600 text-sm">专业顾问评估您的房产和债务情况，制定保房方案</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold shrink-0">2</div>
+            <div>
+              <h3 class="font-semibold text-gray-900 mb-1">法律调解</h3>
+              <p class="text-gray-600 text-sm">通过苏商法律服务中心与银行等金融机构深度沟通</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold shrink-0">3</div>
+            <div>
+              <h3 class="font-semibold text-gray-900 mb-1">达成协议</h3>
+              <p class="text-gray-600 text-sm">协助停止罚息增长，签署调解协议，暂缓法律追责</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold shrink-0">4</div>
+            <div>
+              <h3 class="font-semibold text-gray-900 mb-1">重塑信用</h3>
+              <p class="text-gray-600 text-sm">避免房产进入强制执行程序，帮助回归正常生活</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-green-600 py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl font-bold text-white mb-4">守护您的家，从现在开始</h2>
+        <p class="text-green-100 mb-6">专业法律团队为您保驾护航</p>
+        <a
+          href="/contact"
+          class="inline-block bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+        >
+          立即咨询
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

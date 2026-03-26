@@ -1,0 +1,64 @@
+---
+const footerLinks = [
+  { name: "逾调保", href: "/yutiao" },
+  { name: "保房", href: "/baofang" },
+  { name: "法律咨询", href: "/consult" },
+  { name: "关于我们", href: "/about" },
+  { name: "联系我们", href: "/contact" },
+];
+---
+
+<footer class="bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Brand -->
+      <div class="col-span-1 md:col-span-2">
+        <div class="flex items-center space-x-2 mb-4">
+          <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">律</span>
+          </div>
+          <span class="text-xl font-bold">律金盾</span>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+          律金盾是债事综合服务平台的倡导者与践行者，致力于为负债人提供专业、中立、高效的债事化解服务，重塑社会信用。
+        </p>
+        <div class="mt-4 text-sm text-gray-400">
+          <p>海峡金桥财产保险 × 苏商法律服务中心</p>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-4">产品服务</h3>
+        <ul class="space-y-2">
+          {footerLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-4">联系我们</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>专业顾问一对一服务</li>
+          <li>7×24小时在线咨询</li>
+          <li>调解失败保费全额退还</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-800 mt-8 pt-8">
+      <p class="text-center text-gray-400 text-sm">
+        © 2026 律金盾. 保险+调解+法律三位一体债事服务平台
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,151 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const sellingPoints = [
+  {
+    title: "服务全面",
+    description: "涵盖欠款追讨、立案、担保剥离、限高解除等13类法律业务",
+    icon: "📋",
+  },
+  {
+    title: "部分零费用",
+    description: "政府/国企/央企类欠款追讨，不成功不收费",
+    icon: "💯",
+  },
+  {
+    title: "高效便捷",
+    description: "线上快速立案，节省时间与费用",
+    icon: "⚡",
+  },
+  {
+    title: "专业深度",
+    description: "股权纠纷、知识产权、医疗事故、冤假错案等疑难案件",
+    icon: "🎓",
+  },
+];
+
+const services = [
+  { num: "01", title: "欠款追讨", desc: "货款、工程款追讨，政府/国企/央企类不成功不收费", highlight: true },
+  { num: "02", title: "线上立案", desc: "快速高效，节省时间与费用" },
+  { num: "03", title: "担保剥离", desc: "满足法律条件下，解除担保责任" },
+  { num: "04", title: "执行咨询", desc: "法院判决书执行法律咨询" },
+  { num: "05", title: "车位维权", desc: "购买小区车位维权赔偿" },
+  { num: "06", title: "酒驾复议", desc: "满足法律条件下解除酒驾处罚" },
+  { num: "07", title: "限高解除", desc: "个人限高解除的法律咨询" },
+  { num: "08", title: "疑难案件", desc: "股权纠纷、冤假错案、医疗事故、知识产权、土地征收、继承纠纷等", highlight: true },
+  { num: "09", title: "财产保全", desc: "资产保护与保全" },
+  { num: "10", title: "交通事故", desc: "交通事故纠纷处理" },
+  { num: "11", title: "消费维权", desc: "会员卡、培训费等退费维权" },
+  { num: "12", title: "工伤赔偿", desc: "工伤赔偿咨询与代理" },
+  { num: "13", title: "婚姻咨询", desc: "婚姻家庭法律咨询" },
+];
+---
+
+<Layout title="法律咨询" description="宋状师 - 多元化专业法律服务，13类法律业务">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl font-bold mb-4">法律咨询</h1>
+          <p class="text-xl text-purple-100 mb-2">宋状师专业法律服务</p>
+          <p class="text-purple-200">
+            多元化专业法律服务，涵盖13类法律业务，专业律师团队为您保驾护航
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selling Points -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">为什么选择我们</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {sellingPoints.map((point) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+              <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">{point.icon}</span>
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-2">{point.title}</h3>
+              <p class="text-gray-600 text-sm">{point.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">服务项目</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service) => (
+            <div class={`rounded-xl p-6 ${service.highlight ? 'bg-purple-50 border-2 border-purple-200' : 'bg-white shadow-sm border border-gray-100'}`}>
+              <div class={`text-2xl font-bold mb-2 ${service.highlight ? 'text-purple-600' : 'text-gray-300'}`}>
+                {service.num}
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-2">{service.title}</h3>
+              <p class="text-gray-600 text-sm">{service.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlight Services -->
+    <section class="py-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">重点业务介绍</h2>
+        
+        <div class="space-y-6">
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h3 class="font-semibold text-purple-600 mb-3">💰 欠款追讨（不成功不收费）</h3>
+            <p class="text-gray-600 text-sm mb-4">
+              专注于货款、工程款等欠款追讨业务。针对政府、大型国企央企、事业单位、政府投资平台类欠款，提供<strong>不成功不收费</strong>的保障。
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">货款追讨</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">工程款</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">不成功不收费</span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h3 class="font-semibold text-purple-600 mb-3">⚖️ 疑难案件</h3>
+            <p class="text-gray-600 text-sm mb-4">
+              承接各类复杂疑难案件，包括但不限于：
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-purple-50 text-purple-600 text-xs rounded-full">股权纠纷</span>
+              <span class="px-3 py-1 bg-purple-50 text-purple-600 text-xs rounded-full">冤假错案</span>
+              <span class="px-3 py-1 bg-purple-50 text-purple-600 text-xs rounded-full">医疗事故</span>
+              <span class="px-3 py-1 bg-purple-50 text-purple-600 text-xs rounded-full">知识产权</span>
+              <span class="px-3 py-1 bg-purple-50 text-purple-600 text-xs rounded-full">土地征收</span>
+              <span class="px-3 py-1 bg-purple-50 text-purple-600 text-xs rounded-full">继承纠纷</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-purple-600 py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl font-bold text-white mb-4">免费法律咨询</h2>
+        <p class="text-purple-100 mb-6">专业律师团队为您解答各类法律问题</p>
+        <a
+          href="/contact"
+          class="inline-block bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-purple-50 transition-colors"
+        >
+          立即咨询
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,167 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const sellingPoints = [
+  {
+    title: "权威背书",
+    description: "司法部门监管，调解协议具法律效力，可出具司法公证书",
+    icon: "🏛️",
+  },
+  {
+    title: "零风险承诺",
+    description: "调解失败保费全额退还，无后顾之忧",
+    icon: "✅",
+  },
+  {
+    title: "超低门槛",
+    description: "900元/单，无论债务金额大小",
+    icon: "💰",
+  },
+  {
+    title: "合法合规",
+    description: "拒绝暴力催收与非法反催收，通过司法途径化解",
+    icon: "📜",
+  },
+  {
+    title: "数字化支撑",
+    description: "客户端实时查询，阳光透明可追溯",
+    icon: "💻",
+  },
+];
+
+const steps = [
+  { num: "1", title: "投保", desc: "客户扫码专属二维码，进入小程序，如实填写债务信息并在线缴纳900元保费" },
+  { num: "2", title: "初审", desc: "投保后24小时内，调解专员联系客户核实情况。若不符条件，直接退费结案" },
+  { num: "3", title: "调解", desc: "案件移交苏商法律服务中心，调解员与金融机构沟通，制定还款方案" },
+  { num: "4", title: "签约", desc: "调解员引导客户与金融机构达成一致，签署书面《调解协议书》" },
+  { num: "5", title: "固化", desc: "调解成功后，客户可有偿获得司法公证书；若调解失败，保险公司执行理赔退费" },
+];
+
+const faqs = [
+  {
+    q: "哪些债务可以调解？",
+    a: "银行信用卡、消费金融公司贷款、主流正规网贷。暂不支持私人借贷或非正规高利贷。",
+  },
+  {
+    q: "调解能达到什么效果？",
+    a: "目标是停止高额违约金增长，申请停息挂账，或者争取最高60期的免息分期。具体方案视金融机构政策而定。",
+  },
+  {
+    q: "已经起诉了还能办吗？",
+    a: "只要还没有最终宣判执行，都有调解空间。司法调解本身就是化解诉讼矛盾的重要手段。",
+  },
+  {
+    q: "保费退费要多久？",
+    a: "确认调解失败后，系统会自动触发理赔流程，通常在3-7个工作日内原路退回。",
+  },
+];
+---
+
+<Layout title="逾调保" description="逾调保 - 负债人的法律安全岛，900元化解债务危机">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl font-bold mb-4">逾调保</h1>
+          <p class="text-xl text-blue-100 mb-2">负债人的法律安全岛</p>
+          <p class="text-blue-200">
+            在不良贷款余额突破3.5万亿元的背景下，逾调保为有还款意愿但暂时面临困难的债务人提供了一条合法化解债务的绿色通道。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section class="py-12 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl p-8 shadow-sm">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">适用人群</h2>
+          <p class="text-gray-600">
+            18-60岁，涉及<strong>房贷、车贷、信用卡及消费贷逾期</strong>的群体
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selling Points -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">五大卖点</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          {sellingPoints.map((point) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+              <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">{point.icon}</span>
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-2">{point.title}</h3>
+              <p class="text-gray-600 text-sm">{point.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- SOP -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">服务流程</h2>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+          {steps.map((step, index) => (
+            <div class="relative">
+              <div class="bg-white rounded-xl p-6 shadow-sm h-full">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mb-4">
+                  {step.num}
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">{step.title}</h3>
+                <p class="text-gray-600 text-sm">{step.desc}</p>
+              </div>
+              {index < steps.length - 1 && (
+                <div class="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2">
+                  <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">常见问题</h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <h3 class="font-semibold text-gray-900 mb-2">Q：{faq.q}</h3>
+              <p class="text-gray-600">A：{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-blue-600 py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl font-bold text-white mb-4">立即咨询逾调保</h2>
+        <p class="text-blue-100 mb-6">专业顾问为您量身定制债务化解方案</p>
+        <a
+          href="/contact"
+          class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+        >
+          立即咨询
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

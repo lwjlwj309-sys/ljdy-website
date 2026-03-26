@@ -1,0 +1,148 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/Hero.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+
+const stats = [
+  { value: "3.5万亿", label: "不良贷款市场规模" },
+  { value: "900元", label: "超低服务门槛" },
+  { value: "100%", label: "调解失败全额退费" },
+];
+
+const services = [
+  {
+    title: "逾调保",
+    description: "负债人的法律安全岛，通过保险+司法调解化解债务危机，900元/单，调解失败全额退还。",
+    href: "/yutiao",
+    icon: "🛡️",
+  },
+  {
+    title: "保房",
+    description: "守护资产底线，房产被拍卖或收回危机时，通过法律调解保住房产，重塑信用回归正常生活。",
+    href: "/baofang",
+    icon: "🏠",
+  },
+  {
+    title: "法律咨询",
+    description: "宋状师专业法律服务，涵盖欠款追讨、立案、担保剥离、限高解除等13类法律业务。",
+    href: "/consult",
+    icon: "⚖️",
+  },
+];
+
+const advantages = [
+  {
+    title: "权威背书",
+    description: "司法部门监管，调解协议具法律效力，可出具司法公证书",
+    icon: "🏛️",
+  },
+  {
+    title: "零风险承诺",
+    description: "调解失败保费全额退还，无后顾之忧",
+    icon: "✅",
+  },
+  {
+    title: "合法合规",
+    description: "拒绝暴力催收，通过司法途径化解债务",
+    icon: "📜",
+  },
+  {
+    title: "数字化支撑",
+    description: "客户端实时查询，阳光透明可追溯",
+    icon: "💻",
+  },
+];
+---
+
+<Layout title="首页">
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <Hero />
+    
+    <!-- Stats Section -->
+    <section class="bg-gray-50 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {stats.map((stat) => (
+            <div class="text-center">
+              <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">{stat.value}</div>
+              <div class="text-gray-600">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">核心业务</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            保险+调解+法律三位一体，为您提供全方位的债事化解服务
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service) => (
+            <a href={service.href} class="group">
+              <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-gray-100 h-full">
+                <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
+                  <span class="text-3xl">{service.icon}</span>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                  {service.title}
+                </h3>
+                <p class="text-gray-600 text-sm leading-relaxed">{service.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="bg-gray-50 py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">为什么选择律金盾</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            权威、专业、合规，为您的债务危机提供全方位保障
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {advantages.map((adv) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <span class="text-2xl">{adv.icon}</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">{adv.title}</h3>
+              <p class="text-gray-600 text-sm">{adv.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-blue-600 py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">化债有路，重生有道</h2>
+        <p class="text-blue-100 mb-8 text-lg">
+          专业顾问一对一服务，为您量身定制债务化解方案
+        </p>
+        <a
+          href="/contact"
+          class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+        >
+          立即咨询
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,108 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="联系我们" description="联系律金盾，专业顾问为您服务">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold mb-4">联系我们</h1>
+        <p class="text-xl text-blue-100">专业顾问一对一服务，为您量身定制解决方案</p>
+      </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="text-center p-8 bg-gray-50 rounded-xl">
+            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">📞</span>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">咨询热线</h3>
+            <p class="text-gray-600">7×24小时在线咨询</p>
+            <p class="text-blue-600 font-semibold mt-2">400-XXX-XXXX</p>
+          </div>
+          <div class="text-center p-8 bg-gray-50 rounded-xl">
+            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">💬</span>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">在线客服</h3>
+            <p class="text-gray-600">微信扫一扫</p>
+            <p class="text-blue-600 font-semibold mt-2">扫码添加好友</p>
+          </div>
+          <div class="text-center p-8 bg-gray-50 rounded-xl">
+            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">⏰</span>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">服务时间</h3>
+            <p class="text-gray-600">全天24小时</p>
+            <p class="text-gray-600 mt-2">专业顾问随时待命</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Commitment -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">服务承诺</h2>
+        <div class="bg-white rounded-xl p-8 shadow-sm">
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 text-xl">✓</span>
+              <p class="text-gray-700">专业顾问一对一咨询，量身定制方案</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 text-xl">✓</span>
+              <p class="text-gray-700">7×24小时在线服务，响应及时</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 text-xl">✓</span>
+              <p class="text-gray-700">调解失败保费全额退还，零风险承诺</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 text-xl">✓</span>
+              <p class="text-gray-700">全程透明可追溯，阳光操作</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 text-xl">✓</span>
+              <p class="text-gray-700">客户信息严格保密，隐私安全</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">快速了解</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <a href="/yutiao" class="bg-blue-50 rounded-xl p-6 text-center hover:bg-blue-100 transition-colors">
+            <span class="text-3xl mb-3 block">🛡️</span>
+            <h3 class="font-semibold text-gray-900">逾调保</h3>
+            <p class="text-gray-600 text-sm mt-1">债务化解方案</p>
+          </a>
+          <a href="/baofang" class="bg-green-50 rounded-xl p-6 text-center hover:bg-green-100 transition-colors">
+            <span class="text-3xl mb-3 block">🏠</span>
+            <h3 class="font-semibold text-gray-900">保房</h3>
+            <p class="text-gray-600 text-sm mt-1">房产保全服务</p>
+          </a>
+          <a href="/consult" class="bg-purple-50 rounded-xl p-6 text-center hover:bg-purple-100 transition-colors">
+            <span class="text-3xl mb-3 block">⚖️</span>
+            <h3 class="font-semibold text-gray-900">法律咨询</h3>
+            <p class="text-gray-600 text-sm mt-1">专业法律服务</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
