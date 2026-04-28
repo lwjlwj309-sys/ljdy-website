@@ -2,22 +2,28 @@
 interface Props {
   phone?: string;
   wechat?: string;
-  feishuGroup?: string;
 }
 
 const { 
   phone = "18902268188",
-  wechat = "ljdykf",
-  feishuGroup = "律金盾客服"
+  wechat = "ljdykf"
 } = Astro.props;
+
+// FAQ问题和回复
+const faqs = [
+  { q: "逾调保是什么？", a: "逾调保是律金盾的核心产品，通过"保险+司法调解"的方式帮助负债人化解债务危机。900元/单，调解失败全额退还。" },
+  { q: "服务费用多少？", a: "主流产品（债务修复）900元/次，无限修改直到成功。VIP服务999元/月，包含无限修改+法律保护，调解成功仅收5%-15%。" },
+  { q: "调解需要多久？", a: "一般需要1-4周，具体时间取决于案件复杂程度和债权人配合情况。期间会有专人对接全程跟进。" },
+  { q: "调解不成功怎么办？", a: "调解失败全额退还保费，零风险承诺。您可以重新委托或者选择其他服务，我们不会收取任何费用。" },
+];
 ---
 
 <!-- 在线客服悬浮按钮 -->
 <div id="customer-service" class="fixed bottom-6 right-6 z-50">
   <!-- 聊天面板 -->
-  <div id="chat-panel" class="hidden mb-4 w-80 max-h-[70vh] bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col">
+  <div id="chat-panel" class="hidden mb-4 w-80 max-h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col">
     <!-- 头部 -->
-    <div class="bg-blue-600 text-white p-4 flex items-center justify-between">
+    <div class="bg-blue-600 text-white p-4 flex items-center justify-between flex-shrink-0">
       <div>
         <h3 class="font-semibold">律金盾在线客服</h3>
         <p class="text-blue-100 text-sm">专业顾问一对一服务</p>
@@ -29,71 +35,53 @@ const {
       </button>
     </div>
     
-    <!-- 常见问题 -->
-    <div class="p-4 border-b border-gray-100 overflow-y-auto flex-shrink-0">
-      <p class="text-sm text-gray-500 mb-3">快捷问题</p>
-      <div class="space-y-2">
-        <button class="faq-btn w-full text-left px-3 py-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-sm text-gray-700 transition-colors" data-q="逾调保是什么">
-          逾调保是什么？
-        </button>
-        <button class="faq-btn w-full text-left px-3 py-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-sm text-gray-700 transition-colors" data-q="费用多少">
-          服务费用多少？
-        </button>
-        <button class="faq-btn w-full text-left px-3 py-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-sm text-gray-700 transition-colors" data-q="需要多久">
-          调解需要多久？
-        </button>
-        <button class="faq-btn w-full text-left px-3 py-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-sm text-gray-700 transition-colors" data-q="不成功怎么办">
-          调解不成功怎么办？
-        </button>
+    <!-- 聊天内容区域 -->
+    <div id="chat-content" class="flex-1 overflow-y-auto p-4 space-y-4" style="max-height: 280px;">
+      <!-- 欢迎消息 -->
+      <div class="flex gap-3">
+        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+          <span>🏛️</span>
+        </div>
+        <div class="bg-gray-100 rounded-2xl rounded-tl-none p-3 max-w-[85%]">
+          <p class="text-sm text-gray-700">您好！欢迎来到律金盾。<br/>我是您的在线客服，有任何问题都可以问我。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 快捷问题 -->
+    <div class="border-t border-gray-100 p-3 flex-shrink-0">
+      <p class="text-xs text-gray-400 mb-2">快捷问题</p>
+      <div class="flex flex-wrap gap-2">
+        {faqs.map((faq, i) => (
+          <button 
+            class="faq-btn px-3 py-1.5 bg-gray-50 hover:bg-blue-50 rounded-full text-xs text-gray-600 transition-colors border border-gray-100"
+            data-index={i}
+          >
+            {faq.q.replace('？', '')}
+          </button>
+        ))}
       </div>
     </div>
 
     <!-- 联系方式 -->
-    <div class="p-4 overflow-y-auto flex-1">
-      <p class="text-sm text-gray-500 mb-3">联系客服</p>
-      <div class="space-y-3">
-        <a href={`tel:${phone}`} class="flex items-center gap-3 p-3 bg-gray-50 hover:bg-blue-50 rounded-xl transition-colors">
-          <span class="text-2xl">📞</span>
-          <div>
-            <p class="text-sm font-medium text-gray-900">电话咨询</p>
-            <p class="text-sm text-blue-600">{phone}</p>
-          </div>
+    <div class="border-t border-gray-100 p-3 bg-gray-50 flex-shrink-0">
+      <p class="text-xs text-gray-400 mb-2">联系人工客服</p>
+      <div class="flex gap-2">
+        <a href={`tel:${phone}`} class="flex-1 flex items-center justify-center gap-1 p-2 bg-white rounded-lg border border-gray-200 hover:border-blue-400 transition-colors">
+          <span>📞</span>
+          <span class="text-xs text-gray-700">{phone}</span>
         </a>
-        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-          <span class="text-2xl">💬</span>
-          <div>
-            <p class="text-sm font-medium text-gray-900">微信客服</p>
-            <p class="text-sm text-gray-600">{wechat}</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-          <span class="text-2xl">📱</span>
-          <div>
-            <p class="text-sm font-medium text-gray-900">飞书群</p>
-            <p class="text-sm text-gray-600">{feishuGroup}</p>
-          </div>
+        <div class="flex-1 flex items-center justify-center gap-1 p-2 bg-white rounded-lg border border-gray-200">
+          <span>💬</span>
+          <span class="text-xs text-gray-700">{wechat}</span>
         </div>
       </div>
-    </div>
-
-    <!-- 留言表单 -->
-    <div class="p-4 bg-gray-50 border-t border-gray-100">
-      <p class="text-sm text-gray-500 mb-2">没找到答案？留言咨询</p>
-      <textarea 
-        id="chat-message" 
-        class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm resize-none focus:outline-none focus:border-blue-500"
-        rows="2"
-        placeholder="请输入您的问题..."
-      ></textarea>
-      <button id="send-message" class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
-        提交留言
-      </button>
     </div>
   </div>
 
   <!-- 悬浮按钮 -->
-  <button id="chat-toggle" class="bg-blue-600 text-white w-14 h-14 rounded-full shadow-lg hover:bg-blue-700 transition-all hover:scale-105 flex items-center justify-center">
-    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <button id="chat-toggle" class="bg-blue-600 text-white w-14 h-14 rounded-full shadow-lg hover:bg-blue-700 transition-all hover:scale-105 flex items-center justify-center relative">
+    <svg id="chat-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
     </svg>
     <!-- 未读消息标记 -->
@@ -101,19 +89,18 @@ const {
   </button>
 </div>
 
-<script>
+<script define:vars={{ faqs }}>
   const chatToggle = document.getElementById('chat-toggle');
   const chatPanel = document.getElementById('chat-panel');
   const closeChat = document.getElementById('close-chat');
+  const chatContent = document.getElementById('chat-content');
+  const chatBadge = document.getElementById('chat-badge');
   const faqBtns = document.querySelectorAll('.faq-btn');
-  const sendMessageBtn = document.getElementById('send-message');
-  const chatMessage = document.getElementById('chat-message') as HTMLTextAreaElement;
 
   // 展开/收起聊天面板
   chatToggle?.addEventListener('click', () => {
     chatPanel?.classList.toggle('hidden');
-    // 隐藏未读标记
-    document.getElementById('chat-badge')?.classList.add('hidden');
+    chatBadge?.classList.add('hidden');
   });
 
   // 关闭聊天面板
@@ -121,27 +108,59 @@ const {
     chatPanel?.classList.add('hidden');
   });
 
-  // 常见问题点击
+  // 添加消息到聊天区域
+  function addMessage(role, text) {
+    if (!chatContent) return;
+    
+    const avatar = role === 'user' ? '👤' : '🏛️';
+    const bgClass = role === 'user' 
+      ? 'bg-blue-600 text-white rounded-2xl rounded-tr-none ml-auto' 
+      : 'bg-gray-100 text-gray-700 rounded-2xl rounded-tl-none';
+    
+    const msg = document.createElement('div');
+    msg.className = `flex gap-3 ${role === 'user' ? 'flex-row-reverse' : ''}`;
+    msg.innerHTML = `
+      <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+        <span>${avatar}</span>
+      </div>
+      <div class="${bgClass} p-3 max-w-[85%]">
+        <p class="text-sm">${text}</p>
+      </div>
+    `;
+    chatContent.appendChild(msg);
+    chatContent.scrollTop = chatContent.scrollHeight;
+  }
+
+  // FAQ点击事件
   faqBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const question = btn.getAttribute('data-q');
-      if (question && chatMessage) {
-        chatMessage.value = '';
-        chatMessage.placeholder = `您点击了"${question}"，请描述您的具体情况...`;
-        chatMessage.focus();
+      const index = parseInt(btn.getAttribute('data-index') || '0');
+      const faq = faqs[index];
+      if (faq) {
+        // 显示用户问题
+        addMessage('user', faq.q);
+        // 延迟显示回复
+        setTimeout(() => {
+          addMessage('bot', faq.a);
+        }, 500);
       }
     });
   });
-
-  // 提交留言
-  sendMessageBtn?.addEventListener('click', () => {
-    const message = chatMessage?.value.trim();
-    if (!message) {
-      alert('请输入您的问题');
-      return;
-    }
-    // 这里可以接入飞书机器人或者发送邮件
-    alert('感谢您的留言！客服人员将在工作时间尽快联系您。\n\n工作时间：9:00-17:00');
-    if (chatMessage) chatMessage.value = '';
-  });
 </script>
+
+<style>
+  /* 自定义滚动条样式 */
+  #chat-content::-webkit-scrollbar {
+    width: 4px;
+  }
+  #chat-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #chat-content::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 2px;
+  }
+  #chat-content::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>
