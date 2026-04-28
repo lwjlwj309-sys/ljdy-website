@@ -15,7 +15,7 @@ const {
 <!-- 在线客服悬浮按钮 -->
 <div id="customer-service" class="fixed bottom-6 right-6 z-50">
   <!-- 聊天面板 -->
-  <div id="chat-panel" class="hidden mb-4 w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+  <div id="chat-panel" class="hidden mb-4 w-80 max-h-[70vh] bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col">
     <!-- 头部 -->
     <div class="bg-blue-600 text-white p-4 flex items-center justify-between">
       <div>
@@ -30,7 +30,7 @@ const {
     </div>
     
     <!-- 常见问题 -->
-    <div class="p-4 border-b border-gray-100">
+    <div class="p-4 border-b border-gray-100 overflow-y-auto flex-shrink-0">
       <p class="text-sm text-gray-500 mb-3">快捷问题</p>
       <div class="space-y-2">
         <button class="faq-btn w-full text-left px-3 py-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-sm text-gray-700 transition-colors" data-q="逾调保是什么">
@@ -49,7 +49,7 @@ const {
     </div>
 
     <!-- 联系方式 -->
-    <div class="p-4">
+    <div class="p-4 overflow-y-auto flex-1">
       <p class="text-sm text-gray-500 mb-3">联系客服</p>
       <div class="space-y-3">
         <a href={`tel:${phone}`} class="flex items-center gap-3 p-3 bg-gray-50 hover:bg-blue-50 rounded-xl transition-colors">
