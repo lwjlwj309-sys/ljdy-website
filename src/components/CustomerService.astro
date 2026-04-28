@@ -1,0 +1,147 @@
+---
+interface Props {
+  phone?: string;
+  wechat?: string;
+  feishuGroup?: string;
+}
+
+const { 
+  phone = "18902268188",
+  wechat = "ljdykf",
+  feishuGroup = "律金盾客服"
+} = Astro.props;
+---
+
+<!-- 在线客服悬浮按钮 -->
+<div id="customer-service" class="fixed bottom-6 right-6 z-50">
+  <!-- 聊天面板 -->
+  <div id="chat-panel" class="hidden mb-4 w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+    <!-- 头部 -->
+    <div class="bg-blue-600 text-white p-4 flex items-center justify-between">
+      <div>
+        <h3 class="font-semibold">律金盾在线客服</h3>
+        <p class="text-blue-100 text-sm">专业顾问一对一服务</p>
+      </div>
+      <button id="close-chat" class="hover:bg-blue-500 rounded-lg p-2 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- 常见问题 -->
+    <div class="p-4 border-b border-gray-100">
+      <p class="text-sm text-gray-500 mb-3">快捷问题</p>
+      <div class="space-y-2">
+        <button class="faq-btn w-full text-left px-3 py-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-sm text-gray-700 transition-colors" data-q="逾调保是什么">
+          逾调保是什么？
+        </button>
+        <button class="faq-btn w-full text-left px-3 py-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-sm text-gray-700 transition-colors" data-q="费用多少">
+          服务费用多少？
+        </button>
+        <button class="faq-btn w-full text-left px-3 py-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-sm text-gray-700 transition-colors" data-q="需要多久">
+          调解需要多久？
+        </button>
+        <button class="faq-btn w-full text-left px-3 py-2 bg-gray-50 hover:bg-blue-50 rounded-lg text-sm text-gray-700 transition-colors" data-q="不成功怎么办">
+          调解不成功怎么办？
+        </button>
+      </div>
+    </div>
+
+    <!-- 联系方式 -->
+    <div class="p-4">
+      <p class="text-sm text-gray-500 mb-3">联系客服</p>
+      <div class="space-y-3">
+        <a href={`tel:${phone}`} class="flex items-center gap-3 p-3 bg-gray-50 hover:bg-blue-50 rounded-xl transition-colors">
+          <span class="text-2xl">📞</span>
+          <div>
+            <p class="text-sm font-medium text-gray-900">电话咨询</p>
+            <p class="text-sm text-blue-600">{phone}</p>
+          </div>
+        </a>
+        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+          <span class="text-2xl">💬</span>
+          <div>
+            <p class="text-sm font-medium text-gray-900">微信客服</p>
+            <p class="text-sm text-gray-600">{wechat}</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+          <span class="text-2xl">📱</span>
+          <div>
+            <p class="text-sm font-medium text-gray-900">飞书群</p>
+            <p class="text-sm text-gray-600">{feishuGroup}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 留言表单 -->
+    <div class="p-4 bg-gray-50 border-t border-gray-100">
+      <p class="text-sm text-gray-500 mb-2">没找到答案？留言咨询</p>
+      <textarea 
+        id="chat-message" 
+        class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm resize-none focus:outline-none focus:border-blue-500"
+        rows="2"
+        placeholder="请输入您的问题..."
+      ></textarea>
+      <button id="send-message" class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+        提交留言
+      </button>
+    </div>
+  </div>
+
+  <!-- 悬浮按钮 -->
+  <button id="chat-toggle" class="bg-blue-600 text-white w-14 h-14 rounded-full shadow-lg hover:bg-blue-700 transition-all hover:scale-105 flex items-center justify-center">
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+    </svg>
+    <!-- 未读消息标记 -->
+    <span id="chat-badge" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">1</span>
+  </button>
+</div>
+
+<script>
+  const chatToggle = document.getElementById('chat-toggle');
+  const chatPanel = document.getElementById('chat-panel');
+  const closeChat = document.getElementById('close-chat');
+  const faqBtns = document.querySelectorAll('.faq-btn');
+  const sendMessageBtn = document.getElementById('send-message');
+  const chatMessage = document.getElementById('chat-message') as HTMLTextAreaElement;
+
+  // 展开/收起聊天面板
+  chatToggle?.addEventListener('click', () => {
+    chatPanel?.classList.toggle('hidden');
+    // 隐藏未读标记
+    document.getElementById('chat-badge')?.classList.add('hidden');
+  });
+
+  // 关闭聊天面板
+  closeChat?.addEventListener('click', () => {
+    chatPanel?.classList.add('hidden');
+  });
+
+  // 常见问题点击
+  faqBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const question = btn.getAttribute('data-q');
+      if (question && chatMessage) {
+        chatMessage.value = '';
+        chatMessage.placeholder = `您点击了"${question}"，请描述您的具体情况...`;
+        chatMessage.focus();
+      }
+    });
+  });
+
+  // 提交留言
+  sendMessageBtn?.addEventListener('click', () => {
+    const message = chatMessage?.value.trim();
+    if (!message) {
+      alert('请输入您的问题');
+      return;
+    }
+    // 这里可以接入飞书机器人或者发送邮件
+    alert('感谢您的留言！客服人员将在工作时间尽快联系您。\n\n工作时间：9:00-17:00');
+    if (chatMessage) chatMessage.value = '';
+  });
+</script>
