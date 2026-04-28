@@ -36,7 +36,7 @@ const faqs = [
     </div>
     
     <!-- 聊天内容区域 -->
-    <div id="chat-content" class="flex-1 overflow-y-auto p-4 space-y-4" style="max-height: 280px;">
+    <div id="chat-content" class="flex-1 overflow-y-auto p-4 space-y-4" style="max-height: 200px;">
       <!-- 欢迎消息 -->
       <div class="flex gap-3">
         <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -63,17 +63,15 @@ const faqs = [
       </div>
     </div>
 
-    <!-- 联系方式 -->
+    <!-- 微信二维码 -->
     <div class="border-t border-gray-100 p-3 bg-gray-50 flex-shrink-0">
-      <p class="text-xs text-gray-400 mb-2">联系人工客服</p>
-      <div class="flex gap-2">
-        <a href={`tel:${phone}`} class="flex-1 flex items-center justify-center gap-1 p-2 bg-white rounded-lg border border-gray-200 hover:border-blue-400 transition-colors">
-          <span>📞</span>
-          <span class="text-xs text-gray-700">{phone}</span>
-        </a>
-        <div class="flex-1 flex items-center justify-center gap-1 p-2 bg-white rounded-lg border border-gray-200">
-          <span>💬</span>
-          <span class="text-xs text-gray-700">{wechat}</span>
+      <p class="text-xs text-gray-400 mb-2">长按识别二维码添加客服微信</p>
+      <div class="flex gap-3">
+        <img src="/images/wechat-qr.jpg" alt="客服微信" class="w-20 h-20 object-contain rounded-lg border border-gray-200" />
+        <div class="flex-1">
+          <p class="text-xs text-gray-600 mb-1">📞 {phone}</p>
+          <p class="text-xs text-gray-600">💬 搜索添加：{wechat}</p>
+          <p class="text-xs text-gray-400 mt-2">工作时间：9:00-17:00</p>
         </div>
       </div>
     </div>
