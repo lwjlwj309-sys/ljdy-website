@@ -11,24 +11,28 @@ const stats = [
   { value: "100%", label: "调解失败全额退费" },
 ];
 
+// 根据优化建议文档重构产品体系
 const services = [
   {
-    title: "逾调保",
-    description: "负债人的法律安全岛，通过保险+司法调解化解债务危机，900元/单，调解失败全额退还。",
+    title: "律金盾·债务修复",
+    description: "主流产品，900元/次，无限修改直到成功。调解失败全额退还，零风险承诺。",
     href: "/yutiao",
     icon: "🛡️",
+    tag: "主流产品",
   },
   {
-    title: "保房",
-    description: "守护资产底线，房产被拍卖或收回危机时，通过法律调解保住房产，重塑信用回归正常生活。",
-    href: "/baofang",
-    icon: "🏠",
+    title: "律金盾·VIP服务",
+    description: "特色产品，999元/月，无限修改+法律保护。高折扣，调解成功仅收5%-15%。",
+    href: "/yutiao",
+    icon: "⭐",
+    tag: "特色产品",
   },
   {
-    title: "法律咨询",
-    description: "宋状师专业法律服务，涵盖欠款追讨、立案、担保剥离、限高解除等13类法律业务。",
+    title: "律金盾·法律服务",
+    description: "生态产品，宋状师专业法律服务，涵盖欠款追讨、立案、担保剥离、限高解除等13类业务。",
     href: "/consult",
     icon: "⚖️",
+    tag: "生态产品",
   },
 ];
 
@@ -54,6 +58,14 @@ const advantages = [
     icon: "💻",
   },
 ];
+
+// 私域经营流程
+const flowSteps = [
+  { step: "01", title: "引流", desc: "精准触达负债人群" },
+  { step: "02", title: "激活", desc: "专业咨询建立信任" },
+  { step: "03", title: "转化", desc: "900元低门槛成交" },
+  { step: "04", title: "复购", desc: "VIP服务持续价值" },
+];
 ---
 
 <Layout title="首页">
@@ -77,19 +89,37 @@ const advantages = [
       </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- 品牌统一宣言 -->
+    <section class="py-12 bg-blue-600">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <p class="text-white text-xl md:text-2xl font-medium">
+          律金盾——统一品牌，统一标准，统一服务
+        </p>
+        <p class="text-blue-100 mt-3">
+          保险+调解+法律一站式债事服务平台
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Section - 产品体系重构 -->
     <section class="py-16 md:py-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">核心业务</h2>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">产品体系</h2>
           <p class="text-gray-600 max-w-2xl mx-auto">
-            保险+调解+法律三位一体，为您提供全方位的债事化解服务
+            主流产品 · 特色产品 · 生态产品 三位一体，按需选择
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service) => (
             <a href={service.href} class="group">
-              <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-gray-100 h-full">
+              <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-gray-100 h-full relative overflow-hidden">
+                <!-- 产品标签 -->
+                <div class="absolute top-4 right-4">
+                  <span class="inline-block px-3 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded-full">
+                    {service.tag}
+                  </span>
+                </div>
                 <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
                   <span class="text-3xl">{service.icon}</span>
                 </div>
@@ -104,8 +134,29 @@ const advantages = [
       </div>
     </section>
 
-    <!-- Advantages Section -->
+    <!-- 私域经营流程 -->
     <section class="bg-gray-50 py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">服务流程</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            专业化、标准化、可追溯的私域经营体系
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {flowSteps.map((item) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+              <div class="text-3xl font-bold text-blue-600 mb-2">{item.step}</div>
+              <div class="text-lg font-semibold text-gray-900 mb-1">{item.title}</div>
+              <div class="text-gray-500 text-sm">{item.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="py-16 md:py-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">为什么选择律金盾</h2>
@@ -115,7 +166,7 @@ const advantages = [
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {advantages.map((adv) => (
-            <div class="bg-white rounded-xl p-6 shadow-sm">
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
               <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                 <span class="text-2xl">{adv.icon}</span>
               </div>
@@ -132,7 +183,7 @@ const advantages = [
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-bold text-white mb-4">化债有路，重生有道</h2>
         <p class="text-blue-100 mb-8 text-lg">
-          专业顾问一对一服务，为您量身定制债务化解方案
+          律金盾——负债人的法律安全岛，专业顾问一对一服务
         </p>
         <a
           href="/contact"

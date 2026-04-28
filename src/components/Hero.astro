@@ -8,7 +8,7 @@ interface Props {
 
 const { 
   title = "化债有路，重生有道", 
-  subtitle = "律金盾——保险+调解+法律一站式债事服务平台", 
+  subtitle = "律金盾——保险+调解+法律一站式债事服务平台\n统一品牌 · 统一标准 · 统一服务", 
   ctaText = "立即咨询",
   ctaHref = "/contact"
 } = Astro.props;
@@ -20,7 +20,7 @@ const {
       <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
         {title}
       </h1>
-      <p class="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
+      <p class="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed whitespace-pre-line">
         {subtitle}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -34,8 +34,14 @@ const {
           href="/yutiao"
           class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-colors"
         >
-          了解逾调保
+          了解债务修复
         </a>
+      </div>
+      <!-- 数据背书 -->
+      <div class="mt-12 flex justify-center gap-8 text-blue-100 text-sm">
+        <span>📊 3.5万亿市场规模</span>
+        <span>💰 900元超低门槛</span>
+        <span>✅ 调解失败全额退费</span>
       </div>
     </div>
   </div>
