@@ -1,0 +1,425 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/Hero.astro";
+
+// 五大服务价值图标
+const serviceValues = [
+  { icon: "🔍", title: "追款收款", desc: "法律手段追讨工程款、货款、工资、借款等" },
+  { icon: "📊", title: "债务优化", desc: "协商重组、停息挂账、分期方案" },
+  { icon: "🏠", title: "资产保全", desc: "房产保护、保险资产守护" },
+  { icon: "🛡️", title: "法律护盾", desc: "防非法催收、违规维权" },
+  { icon: "🚀", title: "翻身规划", desc: "上岸路线图、信用重建" },
+];
+
+// 五大产品线
+const products = [
+  {
+    icon: "⚖️",
+    title: "法律护盾与追款收款",
+    tag: "核心主营",
+    desc: "帮您追讨工程款、货款、工资、个人借款。非诉回款、律师函件、起诉诉证保全、财产保全预防、强制执行申请等。",
+    scenarios: ["工程款三百万收不回→资金链断裂→贷款逾期→银行起诉", "货款被拖欠→业务无法运转" ],
+  },
+  {
+    icon: "📋",
+    title: "债务体检与上岸规划",
+    tag: "入口产品",
+    desc: "全面债务诊断（负债类型、金额、利率、风险等级）、资产评估、个性化「上岸路线图」、风险时间窗口提示。",
+    scenarios: ["低门槛引流，快速建立专业信任"],
+    price: "免费-199元",
+  },
+  {
+    icon: "🤝",
+    title: "债务协商与重组",
+    tag: "核心主营",
+    desc: "专业持牌调解机构协助与银行协商优化还款方案。信用卡、经营贷、信用贷等分期重组，协商减免超额利息与违约金。",
+    scenarios: ["信用卡三十万逾期→协商停息→制定还款计划→合法上岸→征信修复"],
+  },
+  {
+    icon: "🏘️",
+    title: "房产保全专项服务",
+    tag: "高客单价",
+    desc: "断供预警期介入协商银行延期、法拍前紧急处置评估最优方案、以房抵债与转售策略、共同财产隔离与保护。",
+    scenarios: ["房贷断供风险户", "收到银行催收通知", "房产已被查封的债务人"],
+  },
+  {
+    icon: "💎",
+    title: "保险资产保全服务",
+    tag: "差异化核心",
+    desc: "保单现金价值保全方案、受益人变更与保单架构优化、保单贷款应急通道、年金险/增额寿险资产隔离规划。创始⼈30年保险高管背景，最高专业壁垒的稀缺服务。",
+    scenarios: ["保单能否被强制执行？", "现金价值会被冻结吗？"],
+  },
+];
+
+// 服务流程
+const flowSteps = [
+  { step: "01", title: "接触与引流", desc: "内容触达·扫码进社群" },
+  { step: "02", title: "建立信任", desc: "社群干货·1对1咨询" },
+  { step: "03", title: "债务体检", desc: "全面诊断·上岸路线图" },
+  { step: "04", title: "方案签约", desc: "深度沟通·签约启动" },
+  { step: "05", title: "执行落地", desc: "追款/债务/房产全程跟进" },
+  { step: "06", title: "持续服务", desc: "上岸后信用重建·年度守护" },
+];
+
+// 竞争壁垒
+const barriers = [
+  { dim: "专业深度", desc: "创始⼈同掌握保险资产保全+银行追债逻辑+司法执行规则，全链路视角独一无二" },
+  { dim: "服务闭环", desc: "一个入口覆盖追款、债务、房产、保险四类核心需求" },
+  { dim: "信任资产", desc: "30年保险高管公信力，真实客户成功上岸案例库" },
+  { dim: "合规底线", desc: "始终在法律框架内操作，不碰黑产，长期品牌可持续" },
+];
+
+// 收费体系
+const feeTable = [
+  { product: "债务体检与规划", mode: "一次性固定费", price: "免费-199元", scene: "入门了解·建立信任" },
+  { product: "追款收款代理", mode: "服务费+效果分成", price: "3,000-8,000元+追回10%-15%", scene: "工程款/货款/工资/借款追讨" },
+  { product: "债务协商代理", mode: "服务费+效果分成", price: "2,000-10,000元+成功减免10%-15%", scene: "信用卡/网贷/经营贷等协商" },
+  { product: "房产保全专项", mode: "项目制固定收费", price: "5,000-50,000元", scene: "断供风险/法拍预警" },
+  { product: "保险资产保全", mode: "顾问费制", price: "1,000-5,000元", scene: "保单保全/资产隔离规划" },
+  { product: "年度财务守护", mode: "年度订阅", price: "3,000-8,000元/年", scene: "持续顾问与风险监控" },
+];
+
+// 合规对比
+const compliance = [
+  { what: "追款与协商", do: "合法追回款项，帮助客户与金融机构达成合理方案", dont: "不承诺「不还钱」「消除征信」等违规结果" },
+  { what: "资产保全", do: "在法律框架内规划资产保全", dont: "不操作任何非法资产转移" },
+  { what: "权益维护", do: "依法维护客户面对非法催收的权益", dont: "不参与任何「反催收」违法行为" },
+  { what: "收费规范", do: "透明收费，签署正式服务合同", dont: "不收取任何无合同的灰色费用" },
+  { what: "专业合作", do: "与持牌调解中心、律师事务所深度合作", dont: "不以律师身份违规出现" },
+];
+---
+
+<Layout title="首页">
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <Hero />
+
+    <!-- 品牌定位与五大服务价值 -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-gold-600 font-semibold text-sm uppercase tracking-wider mb-2">我们是谁</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark-800 mb-4">律金盾的使命与定位</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
+            当一个小企业主陷入债务危机，真正的原因往往不是"乱花销"，而是"追不回款"。
+            他们不是老赖，他们是受害者。律金盾就是要帮助这类人群。
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {serviceValues.map((sv) => (
+            <div class="bg-dark-800 rounded-xl p-6 text-center hover:bg-dark-700 transition-colors">
+              <div class="text-4xl mb-3">{sv.icon}</div>
+              <h3 class="text-gold-400 font-semibold text-lg mb-1">{sv.title}</h3>
+              <p class="text-gray-400 text-sm">{sv.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 市场背景 -->
+    <section class="py-16 md:py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-gold-600 font-semibold text-sm uppercase tracking-wider mb-2">市场背景</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark-800 mb-4">我们为何而生</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h3 class="font-bold text-dark-800 mb-3">现状与趋势</h3>
+            <ul class="space-y-3 text-gray-600 text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-red-500 mt-1">•</span>
+                <span>小企业主款项收不回，资金链断裂——工程款、货款、工资挂账多、回款难</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-500 mt-1">•</span>
+                <span>信用卡、网贷、经营贷逾期规模持续扩大</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-500 mt-1">•</span>
+                <span>房地产下行周期，大量房产面临断供、法拍风险</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-500 mt-1">•</span>
+                <span>个人破产制度不完善，绝大多数债务人缺乏合法出路</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-500 mt-1">•</span>
+                <span>市场服务供给良莠不齐，合规专业机构极度稀缺</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-dark-800 rounded-xl p-6 text-white">
+            <h3 class="font-bold text-gold-400 mb-3">核心市场判断</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="text-sm text-gray-400">需求端</p>
+                <p class="font-semibold">债务人数量爆发式增长<br/>小企业主、个体经营者首当其冲</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-400">供给端</p>
+                <p class="font-semibold">市场混乱，合规、专业的债务优化服务机构极度稀缺</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-400">信任端</p>
+                <p class="font-semibold">债务人在最脆弱的时刻，最需要权威、可信的专业支持</p>
+              </div>
+              <div class="pt-3 border-t border-dark-700">
+                <p class="text-gold-400 font-bold text-lg">这是一个需求爆发·供给混乱·信任稀缺的蓝海市场</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 服务体系（五大产品线） -->
+    <section id="services" class="py-16 md:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-gold-600 font-semibold text-sm uppercase tracking-wider mb-2">核心服务体系</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark-800 mb-4">五大服务产品线</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            律金盾构建了围绕债务人核心需求的完整闭环：追款 → 保资 → 优债 → 护权 → 上岸
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.map((p) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-gray-100 group">
+              <div class="flex items-start justify-between mb-4">
+                <div class="w-12 h-12 bg-gold-100 rounded-lg flex items-center justify-center">
+                  <span class="text-2xl">{p.icon}</span>
+                </div>
+                {p.tag && (
+                  <span class="px-3 py-1 text-xs font-medium bg-gold-100 text-gold-700 rounded-full">{p.tag}</span>
+                )}
+              </div>
+              <h3 class="text-lg font-bold text-dark-800 mb-3">{p.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-3">{p.desc}</p>
+              {p.price && (
+                <p class="text-gold-600 font-semibold text-sm mb-2">参考价格：{p.price}</p>
+              )}
+              <div class="space-y-1">
+                {p.scenarios.map((s) => (
+                  <p class="text-gray-400 text-xs flex items-start gap-1">
+                    <span class="text-gold-500 mt-0.5">▶</span>
+                    <span>{s}</span>
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 创始人背景 -->
+    <section class="py-16 md:py-20 bg-dark-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-gold-400 font-semibold text-sm uppercase tracking-wider mb-2">创始人背景</p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">规则见证者的使命回归</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+          <!-- 履历 -->
+          <div>
+            <h3 class="text-gold-400 font-bold text-xl mb-6">复合背景，无人复刻</h3>
+            <div class="space-y-4">
+              <div class="bg-dark-800 rounded-xl p-5">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-gold-400 font-bold text-lg">30年</span>
+                  <span class="text-white font-semibold">头部保险集团</span>
+                </div>
+                <p class="text-gray-400 text-sm">从一线业务员到省公司副总经理</p>
+                <p class="text-gray-400 text-sm">深度掌握保险资产保全机制，了解如何用保险守护家庭财富</p>
+              </div>
+              <div class="bg-dark-800 rounded-xl p-5">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-gold-400 font-bold text-lg">3年</span>
+                  <span class="text-white font-semibold">银行不良资产处置</span>
+                </div>
+                <p class="text-gray-400 text-sm">完整了解金融机构追债逻辑</p>
+                <p class="text-gray-400 text-sm">深度参与追债执行全链路，法院执行节奏与资产处置规则</p>
+              </div>
+            </div>
+          </div>
+          <!-- 创始人说 -->
+          <div class="bg-dark-800 rounded-xl p-8 relative">
+            <div class="text-gold-400 text-6xl absolute top-4 left-6 opacity-30">"</div>
+            <div class="relative z-10">
+              <h3 class="text-gold-400 font-bold text-xl mb-4">创始人说</h3>
+              <div class="space-y-4 text-gray-300 text-sm leading-relaxed">
+                <p>我在这个行业的两端都待过三十年：</p>
+                <p>我帮助千千万万个家庭用保险守护他们最重要的东西。后来，我又做了3年不良资产处置——我开始站在另一边。</p>
+                <p>我知道银行怎么追债，我知道法院怎么执行，我知道一个家庭的资产是怎么一步步被合法地拿走的。</p>
+                <p>那三年，我看到了太多本可以避免的憾事。很多家庭不是没有资产，而是不知道规则，不知道时间窗口，不知道在哪个节点该做什么。</p>
+                <p>所以我创立了律金盾。</p>
+                <p>我知道规则的全貌——我来帮你在合法合规的前提下，真正守护家庭的核心资产。</p>
+                <p class="text-gold-400 font-bold mt-4">这就是律金盾存在的意义。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 竞争壁垒对比 -->
+        <div class="mt-12">
+          <h3 class="text-center text-gold-400 font-bold text-xl mb-6">为什么这个背景无可复刻</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {barriers.map((b) => (
+              <div class="bg-dark-800 rounded-xl p-5 text-center">
+                <h4 class="text-gold-400 font-bold mb-2">{b.dim}</h4>
+                <p class="text-gray-400 text-sm">{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 服务流程 -->
+    <section class="py-16 md:py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-gold-600 font-semibold text-sm uppercase tracking-wider mb-2">服务流程</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark-800 mb-4">客户服务流程</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">全程专业陪同，信息及时透明，不做任何不切实际的承诺</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {flowSteps.map((f) => (
+            <div class="bg-white rounded-xl p-5 shadow-sm text-center border border-gray-100">
+              <div class="text-2xl font-bold text-gold-600 mb-2">{f.step}</div>
+              <div class="text-base font-semibold text-dark-800 mb-1">{f.title}</div>
+              <div class="text-gray-500 text-xs">{f.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 收费体系 -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-gold-600 font-semibold text-sm uppercase tracking-wider mb-2">透明收费</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-dark-800 mb-4">收费体系</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">透明、分级的收费模式，每一分服务费都与客户利益高度绑定</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full max-w-5xl mx-auto text-sm">
+            <thead>
+              <tr class="bg-dark-800 text-white">
+                <th class="px-4 py-3 text-left">服务产品</th>
+                <th class="px-4 py-3 text-left">收费模式</th>
+                <th class="px-4 py-3 text-left">参考价格</th>
+                <th class="px-4 py-3 text-left">适用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              {feeTable.map((f, idx) => (
+                <tr class={idx % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+                  <td class="px-4 py-3 font-semibold text-dark-800">{f.product}</td>
+                  <td class="px-4 py-3 text-gray-600">{f.mode}</td>
+                  <td class="px-4 py-3 text-gold-600 font-semibold">{f.price}</td>
+                  <td class="px-4 py-3 text-gray-500 text-xs">{f.scene}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-6 max-w-5xl mx-auto">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="bg-dark-800 text-white rounded-lg p-4 text-center">
+              <p class="text-gold-400 font-bold text-sm">前置告知</p>
+              <p class="text-gray-400 text-xs mt-1">签约前明确报价，不存在隐性收费</p>
+            </div>
+            <div class="bg-dark-800 text-white rounded-lg p-4 text-center">
+              <p class="text-gold-400 font-bold text-sm">合同保障</p>
+              <p class="text-gray-400 text-xs mt-1">所有服务均有正式合同</p>
+            </div>
+            <div class="bg-dark-800 text-white rounded-lg p-4 text-center">
+              <p class="text-gold-400 font-bold text-sm">效果绑定</p>
+              <p class="text-gray-400 text-xs mt-1">追款与协商类采用效果分成</p>
+            </div>
+            <div class="bg-dark-800 text-white rounded-lg p-4 text-center">
+              <p class="text-gold-400 font-bold text-sm">合规收费</p>
+              <p class="text-gray-400 text-xs mt-1">以法律顾问服务名义开具，票据齐全</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 合规承诺 -->
+    <section class="py-16 md:py-20 bg-dark-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-gold-400 font-semibold text-sm uppercase tracking-wider mb-2">合规经营</p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">合规经营承诺</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">律金盾将合规视为平台存在的生命线</p>
+        </div>
+        <div class="overflow-x-auto max-w-5xl mx-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-dark-700">
+                <th class="px-4 py-3 text-left text-gold-400"></th>
+                <th class="px-4 py-3 text-left text-green-400 font-semibold">我们做</th>
+                <th class="px-4 py-3 text-left text-red-400 font-semibold">我们不做</th>
+              </tr>
+            </thead>
+            <tbody>
+              {compliance.map((c, idx) => (
+                <tr class="border-b border-dark-800">
+                  <td class="px-4 py-3 font-semibold text-gold-400 whitespace-nowrap">{c.what}</td>
+                  <td class="px-4 py-3 text-gray-300 text-xs">{c.do}</td>
+                  <td class="px-4 py-3 text-red-400 text-xs">{c.dont}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-10 text-center max-w-3xl mx-auto">
+          <p class="text-lg text-gray-300 leading-relaxed">
+            我们不是站在债权人那边，也不是盲目站在债务人那边。
+          </p>
+          <p class="text-2xl font-bold text-gold-400 mt-2">
+            我们站在规则这边。
+          </p>
+          <p class="text-gray-400 mt-4">
+            帮助债务人在合法合规的前提下，做到他们能做到的一切。这是律金盾的立场，也是我们的底线。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-gold-600 to-gold-500">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-dark-900 mb-4">立即咨询，找到您的上岸之路</h2>
+        <p class="text-dark-800 mb-8 text-lg">
+          专业顾问一对一服务，帮您追回欠款、守住资产、优化债务
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact"
+            class="inline-block bg-dark-900 text-gold-400 px-8 py-4 rounded-lg font-bold hover:bg-dark-800 transition-colors"
+          >
+            立即咨询
+          </a>
+          <a
+            href="/yutiao"
+            class="inline-block border-2 border-dark-900 text-dark-900 px-8 py-4 rounded-lg font-semibold hover:bg-dark-900/10 transition-colors"
+          >
+            了解服务详情
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,51 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-dark-900 text-gray-300">
+  <!-- 金色分割线 -->
+  <div class="h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- 品牌信息 -->
+      <div class="md:col-span-2">
+        <img src="/images/logo.png" alt="律金盾" class="h-10 w-auto mb-4" />
+        <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+          债务人资产保全与债务优化专业服务平台。帮您追回欠款、守住资产、优化债务、帮您上岸。合法合规 · 专业守护 · 助力上岸。
+        </p>
+        <p class="text-gray-500 text-sm mt-4">
+          律金盾不是站在债权人那边，也不是盲目站在债务人那边。<br/>
+          我们站在规则这边。
+        </p>
+      </div>
+
+      <!-- 快速链接 -->
+      <div>
+        <h4 class="text-gold-400 font-semibold mb-4">服务导航</h4>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-gray-400 hover:text-gold-400 text-sm transition-colors">首页</a></li>
+          <li><a href="/about" class="text-gray-400 hover:text-gold-400 text-sm transition-colors">关于我们</a></li>
+          <li><a href="/yutiao" class="text-gray-400 hover:text-gold-400 text-sm transition-colors">逾调保·债务修复</a></li>
+          <li><a href="/baofang" class="text-gray-400 hover:text-gold-400 text-sm transition-colors">保房服务</a></li>
+          <li><a href="/consult" class="text-gray-400 hover:text-gold-400 text-sm transition-colors">法律咨询</a></li>
+        </ul>
+      </div>
+
+      <!-- 联系方式 -->
+      <div>
+        <h4 class="text-gold-400 font-semibold mb-4">联系我们</h4>
+        <ul class="space-y-2">
+          <li><a href="/contact" class="text-gray-400 hover:text-gold-400 text-sm transition-colors">在线咨询</a></li>
+          <li><span class="text-gray-400 text-sm">服务时间：周一至周日 9:00-21:00</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-dark-700 mt-8 pt-8 text-center">
+      <p class="text-gray-500 text-sm">
+        &copy; {currentYear} 律金盾 LVJINDUN. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

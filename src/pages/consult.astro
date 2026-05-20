@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="法律咨询" description="律金盾法律咨询服务 - 专业法律护盾，维护您的合法权益">
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-dark-900 via-dark-800 to-dark-700 text-white py-16 relative">
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold mb-4">法律咨询</h1>
+        <p class="text-xl text-gray-300">专业法律护盾，维护您的合法权益</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white border border-gray-100 rounded-xl p-8 shadow-sm mb-8">
+            <h2 class="text-2xl font-bold text-dark-800 mb-6">法律护盾服务</h2>
+            <p class="text-gray-600 mb-6">
+              律金盾与持牌调解中心、律师事务所深度合作，为您提供全方位的法律服务。在合法合规的前提下，依法维护您的权益。
+            </p>
+
+            <h3 class="text-xl font-bold text-dark-800 mb-4">法律服务范围</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-gray-50 rounded-xl p-5">
+                <div class="w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center mb-3">
+                  <span class="text-xl">📝</span>
+                </div>
+                <h4 class="font-semibold text-dark-800 mb-1">起诉诉证保全</h4>
+                <p class="text-gray-600 text-sm">依法保护诉讼权利，确保证据完整</p>
+              </div>
+              <div class="bg-gray-50 rounded-xl p-5">
+                <div class="w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center mb-3">
+                  <span class="text-xl">🔒</span>
+                </div>
+                <h4 class="font-semibold text-dark-800 mb-1">财产保全预防</h4>
+                <p class="text-gray-600 text-sm">防止债务人转移资产，保障执行</p>
+              </div>
+              <div class="bg-gray-50 rounded-xl p-5">
+                <div class="w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center mb-3">
+                  <span class="text-xl">⚖️</span>
+                </div>
+                <h4 class="font-semibold text-dark-800 mb-1">强制执行申请</h4>
+                <p class="text-gray-600 text-sm">依法申请法院强制执行判决</p>
+              </div>
+              <div class="bg-gray-50 rounded-xl p-5">
+                <div class="w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center mb-3">
+                  <span class="text-xl">🛡️</span>
+                </div>
+                <h4 class="font-semibold text-dark-800 mb-1">非法催收维权</h4>
+                <p class="text-gray-600 text-sm">依法维护面对非法催收的权益</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 合规提醒 -->
+          <div class="bg-dark-800 rounded-xl p-8 text-white mb-8">
+            <h2 class="text-xl font-bold text-gold-400 mb-4">我们的法律立场</h2>
+            <div class="space-y-3 text-gray-300 text-sm">
+              <p>我们不做：不承诺「不还钱」「消除征信」等违规结果</p>
+              <p>我们不做：不操作任何非法资产转移</p>
+              <p>我们不做：不参与任何「反催收」违法行为</p>
+              <p>我们做：依法维护客户面对非法催收的权益</p>
+              <p>我们做：与持牌调解中心、律师事务所深度合作</p>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="text-center">
+            <a href="/contact" class="inline-block bg-gold-500 text-dark-900 px-8 py-4 rounded-lg font-bold hover:bg-gold-400 transition-colors text-lg">
+              立即咨询，获取法律支持
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

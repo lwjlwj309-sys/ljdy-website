@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="逾调保·债务修复" description="律金盾债务修复服务 - 帮您协商重组、停息挂账、制定还款方案">
+  <Header />
+
+  <main>
+    <section class="bg-gradient-to-br from-dark-900 via-dark-800 to-dark-700 text-white py-16 relative">
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold mb-4">逾调保 · 债务修复</h1>
+        <p class="text-xl text-gray-300">专业持牌调解，协商优化还款方案</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white border border-gray-100 rounded-xl p-8 shadow-sm">
+              <h2 class="text-2xl font-bold text-dark-800 mb-4">产品一：法律护盾与追款收款</h2>
+              <p class="text-gray-600 mb-4">债务人的最大困境不是自己"寻欢作乐"，而是自己的钱被别人占用。律金盾的任务，是先帮您把属于您的钱追回来。</p>
+              <h3 class="font-semibold text-dark-800 mb-2">适用人群：</h3>
+              <p class="text-gray-600 text-sm mb-4">小企业主、个体工商户、酒店运营商、工程分包商、往来借款未归还者</p>
+              <h3 class="font-semibold text-dark-800 mb-2">追讨款项：</h3>
+              <ul class="space-y-2 text-gray-600 text-sm">
+                <li class="flex items-start gap-2"><span class="text-gold-500 mt-1">•</span>工程款：建筑工程、装修工程、工程分包款项追讨</li>
+                <li class="flex items-start gap-2"><span class="text-gold-500 mt-1">•</span>货款：供应商应收账款、拒不归还的业务货款</li>
+                <li class="flex items-start gap-2"><span class="text-gold-500 mt-1">•</span>工资：被拖欠的劳务报酬、加班费及社保等</li>
+                <li class="flex items-start gap-2"><span class="text-gold-500 mt-1">•</span>个人借款：您借给其他人的友情借款</li>
+              </ul>
+              <h3 class="font-semibold text-dark-800 mt-4 mb-2">追讨方式：</h3>
+              <p class="text-gray-600 text-sm">非诉回款及律师函件、起诉诉证保全、财产保全预防、强制执行申请等</p>
+            </div>
+
+            <div class="bg-white border border-gray-100 rounded-xl p-8 shadow-sm">
+              <h2 class="text-2xl font-bold text-dark-800 mb-4">产品三：债务协商与重组</h2>
+              <p class="text-gray-600 mb-4">专业持牌调解机构协助与银行协商，制定最优还款方案。</p>
+              <h3 class="font-semibold text-dark-800 mb-2">服务内容：</h3>
+              <ul class="space-y-2 text-gray-600 text-sm">
+                <li class="flex items-start gap-2"><span class="text-gold-500 mt-1">•</span>信用卡、经营贷、信用贷、消费贷、网贷分期方案重组</li>
+                <li class="flex items-start gap-2"><span class="text-gold-500 mt-1">•</span>债务合并整理，降低综合还款压力</li>
+                <li class="flex items-start gap-2"><span class="text-gold-500 mt-1">•</span>协商减免超额利息与违约金</li>
+                <li class="flex items-start gap-2"><span class="text-gold-500 mt-1">•</span>全程协同支持，防范非法催收侵权</li>
+              </ul>
+              <div class="mt-6 p-4 bg-gold-50 rounded-lg">
+                <p class="text-dark-800 text-sm font-medium">典型场景：信用卡三十万逾期 → 协商停息 → 制定还款计划 → 合法上岸 → 征信修复</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 收费 -->
+          <div class="bg-dark-800 rounded-xl p-8 text-white">
+            <h2 class="text-2xl font-bold text-gold-400 mb-6">收费参考</h2>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center border-b border-dark-700 pb-3">
+                <span class="text-gray-300">追款收款代理</span>
+                <span class="text-gold-400 font-semibold">3,000-8,000元 + 追回款额10%-15%</span>
+              </div>
+              <div class="flex justify-between items-center border-b border-dark-700 pb-3">
+                <span class="text-gray-300">债务协商代理</span>
+                <span class="text-gold-400 font-semibold">2,000-10,000元 + 成功减免额10%-15%</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-300">债务体检与规划</span>
+                <span class="text-gold-400 font-semibold">免费-199元</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="text-center mt-12">
+            <a href="/contact" class="inline-block bg-gold-500 text-dark-900 px-8 py-4 rounded-lg font-bold hover:bg-gold-400 transition-colors text-lg">
+              立即咨询，定制还款方案
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

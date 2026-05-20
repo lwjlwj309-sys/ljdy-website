@@ -1,0 +1,122 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="联系我们" description="联系律金盾，专业顾问为您服务">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-dark-900 via-dark-800 to-dark-700 text-white py-16 relative">
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold mb-4">联系我们</h1>
+        <p class="text-xl text-gray-300">专业顾问一对一服务，为您量身定制解决方案</p>
+      </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div class="text-center p-8 bg-gray-50 rounded-xl border border-gray-100">
+            <div class="w-14 h-14 bg-gold-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">📞</span>
+            </div>
+            <h3 class="font-semibold text-dark-800 mb-2">咨询热线</h3>
+            <p class="text-gray-600 text-sm">9:00-17:00 咨询服务</p>
+            <p class="text-gold-600 font-semibold mt-2">189-0226-8188</p>
+          </div>
+          <div class="text-center p-8 bg-gray-50 rounded-xl border border-gray-100">
+            <div class="w-14 h-14 bg-gold-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">💬</span>
+            </div>
+            <h3 class="font-semibold text-dark-800 mb-2">在线客服</h3>
+            <p class="text-gray-600 text-sm">微信扫一扫</p>
+            <p class="text-gold-600 font-semibold mt-2">扫码添加好友</p>
+          </div>
+          <div class="text-center p-8 bg-gray-50 rounded-xl border border-gray-100">
+            <div class="w-14 h-14 bg-gold-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">⏰</span>
+            </div>
+            <h3 class="font-semibold text-dark-800 mb-2">服务时间</h3>
+            <p class="text-gray-600 text-sm">周一至周日 9:00-21:00</p>
+            <p class="text-gold-600 font-semibold mt-2">专业顾问随时待命</p>
+          </div>
+          <div class="text-center p-8 bg-gray-50 rounded-xl border border-gray-100">
+            <div class="w-14 h-14 bg-gold-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">📍</span>
+            </div>
+            <h3 class="font-semibold text-dark-800 mb-2">公司地址</h3>
+            <p class="text-gray-600 text-sm">广州市番禺区</p>
+            <p class="text-gold-600 font-semibold mt-2">万科世博汇A6栋1031</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Commitment -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-dark-800 mb-8 text-center">服务承诺</h2>
+        <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 text-xl">✓</span>
+              <p class="text-gray-700">专业顾问一对一咨询，量身定制方案</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 text-xl">✓</span>
+              <p class="text-gray-700">周一至周日 9:00-21:00 咨询服务</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 text-xl">✓</span>
+              <p class="text-gray-700">透明收费，签署正式服务合同</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 text-xl">✓</span>
+              <p class="text-gray-700">全程透明可追溯，阳光操作</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 text-xl">✓</span>
+              <p class="text-gray-700">客户信息严格保密，隐私安全</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-dark-800 mb-8 text-center">快速了解服务</h2>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
+          <a href="/" class="bg-dark-800 rounded-xl p-5 text-center hover:bg-dark-700 transition-colors">
+            <span class="text-2xl mb-2 block">🏠</span>
+            <h3 class="font-semibold text-gold-400 text-sm">首页</h3>
+          </a>
+          <a href="/about" class="bg-dark-800 rounded-xl p-5 text-center hover:bg-dark-700 transition-colors">
+            <span class="text-2xl mb-2 block">📖</span>
+            <h3 class="font-semibold text-gold-400 text-sm">关于我们</h3>
+          </a>
+          <a href="/yutiao" class="bg-dark-800 rounded-xl p-5 text-center hover:bg-dark-700 transition-colors">
+            <span class="text-2xl mb-2 block">🛡️</span>
+            <h3 class="font-semibold text-gold-400 text-sm">债务优化</h3>
+          </a>
+          <a href="/baofang" class="bg-dark-800 rounded-xl p-5 text-center hover:bg-dark-700 transition-colors">
+            <span class="text-2xl mb-2 block">🏘️</span>
+            <h3 class="font-semibold text-gold-400 text-sm">保房服务</h3>
+          </a>
+          <a href="/consult" class="bg-dark-800 rounded-xl p-5 text-center hover:bg-dark-700 transition-colors">
+            <span class="text-2xl mb-2 block">⚖️</span>
+            <h3 class="font-semibold text-gold-400 text-sm">法律咨询</h3>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
