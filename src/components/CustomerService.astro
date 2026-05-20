@@ -1,0 +1,164 @@
+---
+interface Props {
+  phone?: string;
+  wechat?: string;
+}
+
+const { 
+  phone = "18902268188",
+  wechat = "ljdykf"
+} = Astro.props;
+
+// FAQ问题和回复
+const faqs = [
+  { q: '逾调保是什么？', a: '逾调保是律金盾的核心产品，通过保险+司法调解的方式帮助负债人化解债务危机。900元/单，调解失败全额退还。' },
+  { q: '服务费用多少？', a: '主流产品（债务修复）900元/次，无限修改直到成功。VIP服务999元/月，包含无限修改+法律保护，调解成功仅收5%-15%。' },
+  { q: '调解需要多久？', a: '一般需要1-4周，具体时间取决于案件复杂程度和债权人配合情况。期间会有专人对接全程跟进。' },
+  { q: '调解不成功怎么办？', a: '调解失败全额退还保费，零风险承诺。您可以重新委托或者选择其他服务，我们不会收取任何费用。' },
+];
+---
+
+<!-- 在线客服悬浮按钮 -->
+<div id="customer-service" class="fixed bottom-6 right-6 z-50">
+  <!-- 聊天面板 -->
+  <div id="chat-panel" class="hidden mb-4 w-80 max-h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col">
+    <!-- 头部 -->
+    <div class="bg-blue-600 text-white p-4 flex items-center justify-between flex-shrink-0">
+      <div>
+        <h3 class="font-semibold">律金盾在线客服</h3>
+        <p class="text-blue-100 text-sm">专业顾问一对一服务</p>
+      </div>
+      <button id="close-chat" class="hover:bg-blue-500 rounded-lg p-2 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- 聊天内容区域 -->
+    <div id="chat-content" class="flex-1 overflow-y-auto p-4 space-y-4" style="max-height: 200px;">
+      <!-- 欢迎消息 -->
+      <div class="flex gap-3">
+        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+          <span>🏛️</span>
+        </div>
+        <div class="bg-gray-100 rounded-2xl rounded-tl-none p-3 max-w-[85%]">
+          <p class="text-sm text-gray-700">您好！欢迎来到律金盾。<br/>我是您的在线客服，有任何问题都可以问我。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 快捷问题 -->
+    <div class="border-t border-gray-100 p-3 flex-shrink-0">
+      <p class="text-xs text-gray-400 mb-2">快捷问题</p>
+      <div class="flex flex-wrap gap-2">
+        {faqs.map((faq, i) => (
+          <button 
+            class="faq-btn px-3 py-1.5 bg-gray-50 hover:bg-blue-50 rounded-full text-xs text-gray-600 transition-colors border border-gray-100"
+            data-index={i}
+          >
+            {faq.q.replace('？', '')}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- 微信二维码 -->
+    <div class="border-t border-gray-100 p-3 bg-gray-50 flex-shrink-0">
+      <p class="text-xs text-gray-400 mb-2">长按识别二维码添加客服微信</p>
+      <div class="flex gap-3">
+        <img src="/images/wechat-qr.jpg" alt="客服微信" class="w-20 h-20 object-contain rounded-lg border border-gray-200" />
+        <div class="flex-1">
+          <p class="text-xs text-gray-600 mb-1">📞 {phone}</p>
+          <p class="text-xs text-gray-600">💬 搜索添加：{wechat}</p>
+          <p class="text-xs text-gray-400 mt-2">工作时间：9:00-17:00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 悬浮按钮 -->
+  <button id="chat-toggle" class="bg-blue-600 text-white w-14 h-14 rounded-full shadow-lg hover:bg-blue-700 transition-all hover:scale-105 flex items-center justify-center relative">
+    <svg id="chat-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+    </svg>
+    <!-- 未读消息标记 -->
+    <span id="chat-badge" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">1</span>
+  </button>
+</div>
+
+<script define:vars={{ faqs }}>
+  const chatToggle = document.getElementById('chat-toggle');
+  const chatPanel = document.getElementById('chat-panel');
+  const closeChat = document.getElementById('close-chat');
+  const chatContent = document.getElementById('chat-content');
+  const chatBadge = document.getElementById('chat-badge');
+  const faqBtns = document.querySelectorAll('.faq-btn');
+
+  // 展开/收起聊天面板
+  chatToggle?.addEventListener('click', () => {
+    chatPanel?.classList.toggle('hidden');
+    chatBadge?.classList.add('hidden');
+  });
+
+  // 关闭聊天面板
+  closeChat?.addEventListener('click', () => {
+    chatPanel?.classList.add('hidden');
+  });
+
+  // 添加消息到聊天区域
+  function addMessage(role, text) {
+    if (!chatContent) return;
+    
+    const avatar = role === 'user' ? '👤' : '🏛️';
+    const bgClass = role === 'user' 
+      ? 'bg-blue-600 text-white rounded-2xl rounded-tr-none ml-auto' 
+      : 'bg-gray-100 text-gray-700 rounded-2xl rounded-tl-none';
+    
+    const msg = document.createElement('div');
+    msg.className = `flex gap-3 ${role === 'user' ? 'flex-row-reverse' : ''}`;
+    msg.innerHTML = `
+      <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+        <span>${avatar}</span>
+      </div>
+      <div class="${bgClass} p-3 max-w-[85%]">
+        <p class="text-sm">${text}</p>
+      </div>
+    `;
+    chatContent.appendChild(msg);
+    chatContent.scrollTop = chatContent.scrollHeight;
+  }
+
+  // FAQ点击事件
+  faqBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const index = parseInt(btn.getAttribute('data-index') || '0');
+      const faq = faqs[index];
+      if (faq) {
+        // 显示用户问题
+        addMessage('user', faq.q);
+        // 延迟显示回复
+        setTimeout(() => {
+          addMessage('bot', faq.a);
+        }, 500);
+      }
+    });
+  });
+</script>
+
+<style>
+  /* 自定义滚动条样式 */
+  #chat-content::-webkit-scrollbar {
+    width: 4px;
+  }
+  #chat-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #chat-content::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 2px;
+  }
+  #chat-content::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>
